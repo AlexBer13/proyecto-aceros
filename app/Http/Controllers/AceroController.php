@@ -13,6 +13,7 @@ class AceroController extends Controller
     public function index()
     {
         $aceros = Acero::all();
+
         return view('aceros.index-aceros', compact('aceros'));
     }
 
@@ -50,7 +51,7 @@ class AceroController extends Controller
      */
     public function show(Acero $acero)
     {
-        //
+        return view('aceros.show-acero', compact('acero'));
     }
 
     /**
@@ -58,7 +59,7 @@ class AceroController extends Controller
      */
     public function edit(Acero $acero)
     {
-        //
+        return view('aceros.edit-acero', compact('acero'));
     }
 
     /**
@@ -66,7 +67,18 @@ class AceroController extends Controller
      */
     public function update(Request $request, Acero $acero)
     {
-        //
+        
+        $request->validate([
+            'tipo_de_calibre' => ['required','integer'],
+            'costos' => ['required', 'integer'],
+            'cantidad' => ['required', 'integer']
+        ]);
+
+        $acero->tipo_de_calibre = $request->tipo_de_calibre;
+        $acero->costos = $request->costos;
+        $acero->cantidad = $request->cantidad;
+        $acero->save();
+        return redirect()->route('aceros.show', $acero);
     }
 
     /**

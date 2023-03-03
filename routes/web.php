@@ -18,10 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Pagina principal
-Route::get('acero', [AceroController::class, 'index']);
+//Route::get('acero', [AceroController::class, 'index']);
 
 //Formulario
 
-Route::get('/acero', [AceroController::class, 'index']);
-Route::post('/formulario', [AceroController::class, 'store']);
-Route::get('/formulario', [AceroController::class, 'create']);
+//Route::get('/acero', [AceroController::class, 'index']);
+//Route::post('/formulario', [AceroController::class, 'store']);
+//Route::get('/formulario', [AceroController::class, 'create']);
+Route::resource('aceros', AceroController::class);
