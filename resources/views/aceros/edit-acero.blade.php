@@ -12,21 +12,21 @@
     @csrf
     @method('patch')
     <label for="tipo_de_calibre">Tipo de calibre</label><br>
-    <input type="number" name="tipo_de_calibre" id="tipo_de_calibre" value="{{$acero->tipo_de_calibre}}"><br>
+    <input type="number" name="tipo_de_calibre" id="tipo_de_calibre" value="{{ old('tipo_de_calibre') ?? $acero->tipo_de_calibre}}"><br>
     @error('tipo_de_calibre')
         <h4>{{ $message }}</h4>
     @enderror
 
     <br>
     <label for="costos">costos</label><br>
-    <input type="number" name="costos" id="costos" value= "{{$acero->costos}}">
+    <input type="number" name="costos" id="costos" value= "{{old('costos') ?? $acero->costos}}">
     @error('costos')
         <h4>{{$message}}</h4>
     @enderror
     
     <br>
     <label for="cantidad">cantidad</label><br>
-    <input type="number" name="cantidad" id="cantidad" value= "{{$acero->cantidad}}">
+    <input type="number" name="cantidad" id="cantidad" value= "{{old('cantidad') ?? $acero->cantidad}}">
     @error('cantidad')
     <h4>{{$message}}</h4>
     @enderror

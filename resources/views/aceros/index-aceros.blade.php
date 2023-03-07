@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Listado de aceros</h1>
-    <a href="/acero/create">Agregar acero</a>
+    <a href="{{ route('aceros.create') }}">Agregar acero</a>
 
     <ul>
         @foreach ($aceros as $m)

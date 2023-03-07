@@ -23,7 +23,7 @@ class AceroController extends Controller
 
     public function create()
     {
-       return view('/aceros/formulario');
+       return view('/aceros/create-aceros');
 
     }
 
@@ -86,6 +86,7 @@ class AceroController extends Controller
      */
     public function destroy(Acero $acero)
     {
-        //
+        $acero->delete();
+        return redirect()->route('aceros.index');
     }
 }

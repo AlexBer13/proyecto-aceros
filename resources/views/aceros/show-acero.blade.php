@@ -14,4 +14,11 @@
     <h2>{{ $acero->costos }} </h2>
     <h3>{{ $acero->cantidad }}</h3>
     <a href="{{ route('aceros.index', $acero) }}">Inicio</a>
+    <hr>
+    <form action="{{ route('aceros.destroy', $acero) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Borrar</button>
+    </form>
+        
 </html>
