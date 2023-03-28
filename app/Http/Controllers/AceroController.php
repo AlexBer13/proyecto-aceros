@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class AceroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   // public function _construct()
+    //{
+     //   $this->middleware('auth')->except('index');
+    //}
     public function index()
     {
         $aceros = Acero::all();
@@ -33,16 +34,24 @@ class AceroController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tipo_de_calibre' => ['required','integer'],
+            'tipo_de_calibre' => ['required','string'],
             'costos' => ['required', 'integer'],
             'cantidad' => ['required', 'integer']
         ]);
 
-        $aceros = new Acero();
-        $aceros->tipo_de_calibre = $request->tipo_de_calibre;
-        $aceros->costos = $request->costos;
-        $aceros->cantidad = $request->cantidad;
-        $aceros->save();
+        //$aceros = new Acero();
+        //$aceros->tipo_de_calibre = $request->tipo_de_calibre;
+        //$aceros->costos = $request->costos;
+        //$aceros->cantidad = $request->cantidad;
+        //$aceros->save();
+        //return AceroController::index();
+        //dd($request->all());
+        //Acero::create([
+          //  'tipo_de_calibre' -> $request->tipo_de_calibre,
+            //'cantidad' -> $request->cantidad,
+            //'costos'-> costos,
+        //]);
+        Acero::create($request->all());
         return AceroController::index();
     }
 
@@ -68,17 +77,18 @@ class AceroController extends Controller
     public function update(Request $request, Acero $acero)
     {
         
-        $request->validate([
-            'tipo_de_calibre' => ['required','integer'],
-            'costos' => ['required', 'integer'],
-            'cantidad' => ['required', 'integer']
-        ]);
+        Acero::where('id', $acero->id)->update($request->except('_token','_method'));
+        //$request->validate([
+          //  'tipo_de_calibre' => ['required','integer'],
+            //'costos' => ['required', 'integer'],
+            //'cantidad' => ['required', 'integer']
+        //]);
 
-        $acero->tipo_de_calibre = $request->tipo_de_calibre;
-        $acero->costos = $request->costos;
-        $acero->cantidad = $request->cantidad;
-        $acero->save();
-        return redirect()->route('aceros.show', $acero);
+        //$acero->tipo_de_calibre = $request->tipo_de_calibre;
+        //$acero->costos = $request->costos;
+        //$acero->cantidad = $request->cantidad;
+        //$acero->save();
+        return redirect()->route('aceros.index', $acero);
     }
 
     /**

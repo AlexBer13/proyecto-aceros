@@ -26,3 +26,13 @@ Route::get('/', function () {
 //Route::post('/formulario', [AceroController::class, 'store']);
 //Route::get('/formulario', [AceroController::class, 'create']);
 Route::resource('aceros', AceroController::class);
+Route::resource('aceros',AceroController::class)->middleware('auth');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

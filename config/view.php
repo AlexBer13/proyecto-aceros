@@ -32,5 +32,10 @@ return [
         'VIEW_COMPILED_PATH',
         realpath(storage_path('framework/views'))
     ),
-
+    
+    'aliases' => [
+        // ...
+        'Plantilla' => \App\View\Components\Plantilla::class,
+    ],
+    
 ];
