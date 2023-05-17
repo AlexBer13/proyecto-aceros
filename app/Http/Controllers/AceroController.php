@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AceroController extends Controller
 {
-   // public function _construct()
+   // public function _construct()  
     //{
      //   $this->middleware('auth')->except('index');
     //}
