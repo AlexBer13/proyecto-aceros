@@ -30,11 +30,15 @@
 					</div>
 				<div class="col-sm-6">
 				 		<a href="#Agregar" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar</span></a> 
-					
+						<form method="POST" action="{{ route('archivo.index') }}">
+    					@csrf
+   		   				 <button type="submit" href="#logout" class="btn btn-success" data-toggle="modal" ><i   class="material-icons">&#xE168;</i><span>Archivo</span></a> </button>
+						</form>
 						<form method="POST" action="{{ route('logout') }}">
     					@csrf
    		   				 <button type="submit" href="#logout" class="btn btn-success" data-toggle="modal" ><i class="material-icons">&#xE168;</i><span>Log Out</span></a> </button>
 					</form>
+					
 				</div>
 				</div>
 			</div>
