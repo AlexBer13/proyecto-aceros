@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\storage;
 
 class ArchivoController extends Controller
 {
@@ -29,7 +30,18 @@ class ArchivoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('archivo') && $request->file('archivo')->isValid()){
+            $ruta = $request->archivo->store('documentos');
+
+            //crear registro en la tabla de archivos
+            $archivo = new Archivo();
+            $archivo->ruta = $ruta;
+            $archivo->nombre_original = $request->archivo->getClientOriginalName();
+            $archivo->mime = $request->archivo->getMimeType();
+            $archivo->save();
+        }
+
+        return redirect()->route('archivo.index');
     }
 
     /**
@@ -45,5 +57,10 @@ class ArchivoController extends Controller
     public function destroy(Archivo $archivo)
     {
         //
+    }
+
+    public function descargar(Archivo $archivo)
+    {
+        return Storage::download($archivo->ruta, $archivo->nombre_original, ['Content-Type' => $archivo->mime]);
     }
 }

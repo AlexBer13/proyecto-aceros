@@ -1,4 +1,4 @@
-<x-Plantilla :acero='$aceros'>
+
 
 
  <ul>
@@ -14,7 +14,7 @@
 	<div class="modal-dialog">
 	<div class="modal-content">
 			
-        <form action=" {{route('archivo.store')}}" method="POST" enctype="multipart/form-data">
+        <form action=" {{route('archivo.store')}}" method="POST">
              @csrf <!-- para cuando se reenvia info del formulario no se duplique -->
              @method('patch')  <!-- para que se pueda enviar informacion -->
 
@@ -61,7 +61,7 @@
 <div id="deleteEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-		<form action="{{ route('archivo.destroy',$archivo) }}" method="POST">
+		<form action="{{ route('aceros.destroy',$m) }}" method="POST">
             
 		@csrf
     	@method('DELETE')
@@ -84,4 +84,3 @@
         @endforeach 
         </ul>
 
-</x-Plantilla>
