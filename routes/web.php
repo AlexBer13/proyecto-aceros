@@ -40,4 +40,6 @@ Route::middleware([
 
 Route::resource('archivo', ArchivoController::class)->except(['edit','update']);
 
-Route::get('archivo', [ArchivoController::class, descargar]->name('descargar'));
+//Route::get('archivo', [ArchivoController::class, descargar]->name('descargar'));
+
+Route::get('/archivo/descargar/{archivo}', [ArchivoController::class, 'descargar'])->name('archivo.descargar');
