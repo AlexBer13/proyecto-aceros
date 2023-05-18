@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal('costos',8,2);
             $table->string('cantidad');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

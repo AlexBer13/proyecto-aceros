@@ -5,12 +5,11 @@
         @foreach ($aceros as $m)
             
            
-<!----------------------- update Modal HTML ---------------------->
+<!----------------------- update Modal HTML ------------clear----------->
 
 
 <div class="modal fade" id="Editar-{{$m->id}}"  >
  
-
 	<div class="modal-dialog">
 	<div class="modal-content">
 			
@@ -25,9 +24,9 @@
 
 				<div class="modal-body">					
 					<div class="form-group">
-                    <label for="tipo_de_calibre">tipo de acero</label><br>
+                    <label for="tipo_de_calibre">tipo de calibre</label><br>
                     <input type="text" name="tipo_de_calibre" id="tipo_de_calibre" value="{{$m->tipo_de_calibre}}" value="{{ old('tipo_de_calibre') ?? $m->tipo_de_calibre }}" required><br>
-                    @error('tipo_de_calibre')
+                    @error('tipo_calibre')
                     <h2>{{$message}}</h2>
                     @enderror
 				</div>
