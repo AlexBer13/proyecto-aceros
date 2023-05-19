@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Acero;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class AceroController extends Controller
 {
@@ -24,6 +26,13 @@ class AceroController extends Controller
 
     public function create()
     {
+        
+
+        if (Auth::user()->cannot('create', Acero::class)) {
+
+            abort(403);
+   
+    }
        return view('/aceros/create-aceros');
 
     }
@@ -89,6 +98,7 @@ class AceroController extends Controller
         //$acero->cantidad = $request->cantidad;
         //$acero->save();
         return redirect()->route('aceros.index', $acero);
+      
     }
 
     /**

@@ -49,14 +49,22 @@ class ArchivoController extends Controller
      */
     public function show(Archivo $archivo)
     {
-        //
+        return view('archivo.show', compact('archivo'));
     }
 
     
     
     public function destroy(Archivo $archivo)
     {
-        //
+
+        Storage::delete($archivo->ruta);
+
+        $archivo->delete();
+       
+        return redirect()->route('archivo.index');
+        return redirect()->route('archivo.show');
+
+    
     }
 
     public function descargar(Archivo $archivo)

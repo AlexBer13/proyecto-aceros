@@ -5,28 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archivos</title>
+    <title>Eliminar</title>
 
     <link href="{{ asset('/css/aceros.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container px-4">
     <a class="navbar-brand" href="{{ route('aceros.index') }}">ACEROX</a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -37,80 +32,47 @@
         </div>
     </div>
 </nav>
-<!-- Header-->
-<header class="bg-primary bg-gradient text-white">
-    <div class="container px-4 text-center">
-        <p class="lead">Venta de Aceros</p>
-    </div>
-</header>
-
 
 <body>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2>Archivos</h2>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="{{ route('archivo.create') }}" class="btn btn-success"><img src="{{asset('/imagenes/img_document.svg')}}" class=img_regresar><span>Carga de Archivo</span></a>
 
-                        </div>
-                    </div>
-                    </div>
+<section class="form-edit">
+        <h4>Eliminar</h4>
+        <hr>
+        <h4>¿Esta seguro de eliminar el siguiente registro?</h4>
 
-                 <table class="table table-striped table-hover  text-center">
-                        <thead>
-                        <th>Nombre del Archivo</th>
-                        <th>Acción</th>
-                        </thead>
-                     <tbody>
+        <ul>
+            <li><span>archivo</span>{{$archivo->nombre_original}}</li>
+            
 
-                        @foreach ($archivos as $archivo)
-
-                        <tr class="text-gray-700 dark:tecrecxt-gray-400">
-
-                            <td class="px-4 py-3">
-
-                                <div class="flex items-center text-sm">
-                                    {{ $archivo->nombre_original }}
-                                </div>
-
-                            </td>
-
-                            <td class="px-4 py-3">
-
-                                <div class="flex items-center text-sm">
-
-                                    <a href="{{ route('archivo.descargar', $archivo) }}">Descargar -</a>
-                                
-                                    <form action="{{route('archivo.destroy',$archivo) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="boton_eliminar">Eliminar</button>
-
-                                    </form>
-                                    
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-                        @endforeach
-                     </tbody>
-                    </table>
-            </div>
-        </div>
-    </div>
+            <form action="{{ route('archivo.destroy', $archivo ) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="boton_eliminar">BORRAR</button>
 
 
-    <!-- /*****************************FOOTER*************************************/-->
 
-    <!-- /*****************************FOOTER*************************************/-->
+</form>
+
+            
+        </ul>
+
+
+    </section>
+    <br>
+    <br>
+
+
+ 
+        
+
+
+
+
+ <!-- /**********FOOTER************/-->
+
+    <!-- /**********FOOTER************/-->
+
+    <!-- /**********FOOTER************/-->
 
 
     <footer class="footer text-center text-lg-start text-white">
@@ -152,6 +114,7 @@
             </div>
             <!--Grid row-->
         </div>
+
         <!-- Grid container -->
 
         <!-- Copyright -->

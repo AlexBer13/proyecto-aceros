@@ -27,7 +27,11 @@ Route::get('/', function () {
 //Route::post('/formulario', [AceroController::class, 'store']);
 //Route::get('/formulario', [AceroController::class, 'create']);
 Route::resource('aceros', AceroController::class);
-Route::resource('aceros',AceroController::class)->middleware('auth');
+Route::middleware(['web'])->group(function () {
+    Route::resource('aceros',AceroController::class)->middleware('auth');
+   
+    
+});
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -38,7 +42,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('archivo', ArchivoController::class)->except(['edit','update']);
+Route::resource('archivo', ArchivoController::class)->except(['edit','update'])->middleware('auth');
+
 
 //Route::get('archivo', [ArchivoController::class, descargar]->name('descargar'));
 
