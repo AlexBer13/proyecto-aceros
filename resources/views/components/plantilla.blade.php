@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@livewireStyles
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
@@ -61,6 +61,7 @@
                             <h2><b>ACEROX</b></h2>
                         </div>
                         <div class="col-sm-6">
+						<a href="{{ route('aceros.pdf') }}" class="btn btn-success" ><img src="{{asset('/imagenes/img_pdf.svg')}}" class="img_archivo"><span>PDF-></span></a>
 
                         <a href="{{ route('aceros.create') }}" class="btn btn-success" ><i class="material-icons">&#xE147;</i><span>Agregar</span></a>
 
@@ -207,6 +208,7 @@
         </div>
         <!-- Copyright -->
     </footer>
+	@livewireScripts
 </body>
 
 </html>

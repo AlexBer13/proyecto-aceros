@@ -1,3 +1,4 @@
+<div>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar</title>
+    <title>Agregar</title>
 
     <link href="{{ asset('/css/aceros.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -35,41 +36,38 @@
 
 <body>
 
-<section class="form-edit">
-        <h4>Eliminar</h4>
+    <section class="form-edit">
+        <h4>Agregar</h4>
         <hr>
-        <h4>¿Esta seguro de eliminar el siguiente registro?</h4>
+        <form action=" {{route('aceros.store')}}" method="POST">
+            @csrf <!--para cuando se reenvia info del formulario no se duplique-->
 
-        <ul>
-            <li><span>Tipo de calibre: </span>{{$acero->tipo_de_calibre}}</li>
-            <li><span>Costo: </span>{{$acero->costos}}</li>
-            <li><span>Cantidad: </span> {{$acero->cantidad}}</li>
+            <label for="tipo_de_calibre">tipo de calibre</label><br>
+            <input class="controls" type="text" name="tipo_de_calibre" id="tipo_de_calibre" value="{{old('tipo_de_calibre')}}"><br>
+            @error('tipo_calibre')
+            <h2>{{$message}}</h2>
+            @enderror
 
-            <form action="{{ route('aceros.destroy', $acero ) }}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="boton_eliminar">BORRAR</button>
+            <label for="costos">costo</label><br>
+            <input class="controls" type="number" name="costos" id="costos" step="0.01" min="0" value="{{old('costos')}}"><br>
+            @error('costos')
+            <h2>{{$message}}</h2>
+            @enderror
 
+            <label for="cantidad">cantidad</label><br>
+            <input class="controls" type="number" name="cantidad" id="cantidad" min="0" value="{{old('cantidad')}}"><br>
+            @error('cantidad')
+            <h2>{{$message}}</h2>
+            @enderror
 
-
-</form>
-
-            
-        </ul>
-
+            <input class="botons" type="submit" value="Agregar">
+        </form>
 
     </section>
     <br>
     <br>
 
-
- 
-        
-
-
-
-
- <!-- /**********FOOTER************/-->
+    <!-- /**********FOOTER************/-->
 
     <!-- /**********FOOTER************/-->
 
@@ -125,7 +123,7 @@
         </div>
         <!-- Copyright -->
     </footer>
-    
 </body>
 
 </html>
+</div>

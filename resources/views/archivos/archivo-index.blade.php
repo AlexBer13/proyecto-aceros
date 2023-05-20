@@ -18,6 +18,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -84,16 +85,17 @@
 
                                 <div class="flex items-center text-sm">
 
-                                    <a href="{{ route('archivo.descargar', $archivo) }}">Descargar -</a>
-                                
-                                    <form action="{{route('archivo.destroy',$archivo) }}" method="POST">
+                                <form action="{{ route('archivo.descargar', $archivo) }}" method="GET" class="flex items-center text-sm">
+                                        <button type="submit" class="boton_eliminar">Descargar</button>
+                                    </form>
+
+                                    <form action="{{route('archivo.destroy',$archivo) }}" method="POST" class="flex items-center text-sm">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="boton_eliminar">Eliminar</button>
-
-                                    </form>
+                                </form>
                                     
-
+                                        
                                 </div>
 
                             </td>
@@ -161,6 +163,22 @@
         </div>
         <!-- Copyright -->
     </footer>
-</body>
+    @if(session('archivo')== 'eliminado')
 
+       <script>
+
+        Swal.fire(
+
+         'Eliminado!',
+
+         'Tu archivo ha sido eliminado.',
+
+         'success'
+
+        )
+
+       </script>
+
+  @endif
+</body>
 </html>

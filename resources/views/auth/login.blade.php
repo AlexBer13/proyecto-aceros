@@ -10,11 +10,12 @@
             <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
                 {{ session('status') }}
             </div>
+
         @endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-
+            
             <div>
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
@@ -31,7 +32,7 @@
                     <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
+            
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
@@ -42,7 +43,14 @@
                 <x-button class="ml-4">
                     {{ __('Log in') }}
                 </x-button>
+                
+            </div>
+            <div class="flex items-center justify-end mt-4">
+                <a href="{{ route('google-auth') }}">
+                    <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;">
+                </a>
             </div>
         </form>
+        
     </x-authentication-card>
 </x-guest-layout>

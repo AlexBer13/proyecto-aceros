@@ -61,9 +61,8 @@ class ArchivoController extends Controller
 
         $archivo->delete();
        
-        return redirect()->route('archivo.index');
+        return redirect()->route('archivo.index')->with('archivo', 'eliminado');
         return redirect()->route('archivo.show');
-
     
     }
 

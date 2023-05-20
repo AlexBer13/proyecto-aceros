@@ -49,7 +49,12 @@
     @method('DELETE')
     <button type="submit" class="boton_eliminar">BORRAR</button>
 
-
+    <script>
+        @if (session('success'))
+        alert("El archivo se eliminó correctamente.");
+        @endif
+    </script>
+    
 
 </form>
 

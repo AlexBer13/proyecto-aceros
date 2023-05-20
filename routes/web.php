@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AceroController;
 use App\Http\Controllers\ArchivoController;
+use App\Http\Controllers\GoogleAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::get('/', function () {
 //Route::get('/acero', [AceroController::class, 'index']);
 //Route::post('/formulario', [AceroController::class, 'store']);
 //Route::get('/formulario', [AceroController::class, 'create']);
+Route::get('aceros/pdf',[AceroController::class, 'pdf'])->name('aceros.pdf');
 Route::resource('aceros', AceroController::class);
 Route::middleware(['web'])->group(function () {
     Route::resource('aceros',AceroController::class)->middleware('auth');
@@ -48,3 +51,7 @@ Route::resource('archivo', ArchivoController::class)->except(['edit','update'])-
 //Route::get('archivo', [ArchivoController::class, descargar]->name('descargar'));
 
 Route::get('/archivo/descargar/{archivo}', [ArchivoController::class, 'descargar'])->name('archivo.descargar');
+Route::get('/consulta', [AceroController::class, 'consulta']);
+
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('/auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);

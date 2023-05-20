@@ -83,5 +83,42 @@
 </div>
         @endforeach 
         </ul>
+		@if(session('acero')== 'eliminado')
 
+<script>
+
+ Swal.fire(
+
+  'Eliminado!',
+
+  'Tu registro ha sido eliminado.',
+
+  'success'
+
+ )
+
+
+</script>
+
+@endif
+
+@if(session('acero') == 'editar')
+    <script>
+        Swal.fire(
+            'Editado!',
+            'Tu registro ha sido editado.',
+            'success'
+        );
+    </script>
+@endif
+
+@if(session('acero') == 'agregado')
+    <script>
+        Swal.fire(
+            'Agregado!',
+            'Tu registro ha sido agregado.',
+            'success'
+        );
+    </script>
+@endif
 </x-Plantilla>
